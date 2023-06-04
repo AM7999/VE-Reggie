@@ -19,7 +19,7 @@
 
 all: lovefile desktop console
 
-desktop: lovefile win64 win32 macos
+desktop: lovefile win64 win32 macos appimage_x64
 
 console: lovefile switch
 
@@ -100,6 +100,22 @@ switch: lovefile
 	@mkdir -p build/release
 	@rm -f build/release/funkin-rewritten-switch.zip
 	@cd build/switch; zip -9 -r ../release/funkin-rewritten-switch.zip .
+
+appimage_x64: lovefile
+	@rm -rf build/appimage
+	@mkdir -p build/appimage/
+
+	@sh ext_appimg.sh
+	@cp build/lovefile/funkin-rewritten.love build/appimage
+	
+	@cat squashfs-root/bin/love build/appimage/funkin-rewritten.love > squashfs-root/bin/funkin-rewritten
+	@rm squashfs-root/love.desktop
+	@cp resources/appimage/love.desktop squashfs-root/
+	@chmod a+x squashfs-root/bin/funkin-rewritten
+
+	@resources/appimage/appimagetool-x86_64.AppImage squashfs-root build/appimage/VanillaEngineReggieMod.AppImage
+	@rm -rf squashfs-root
+	@rm build/appimage/funkin-rewritten.love
 
 clean:
 	@rm -rf build

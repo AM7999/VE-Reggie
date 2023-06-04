@@ -92,3 +92,24 @@ jobs:
         with:
           name: funkin-rewritten-lovefile
           path: build/lovefile
+
+  appimage_x64:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download Dependencies
+        run: cd resources/appimage %% wget https://github.com/love2d/love/releases/download/11.4/love-11.4-x86_64.AppImage
+        cd resources/appimage %% wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+
+      - name: Build
+        run: |
+          make appimage_x64
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: funkin-rewritten-appimage
+          path: build/appimage

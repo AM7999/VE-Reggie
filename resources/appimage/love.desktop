@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vanilla Engine: Reggie Mod
+Comment=Friday Night Funkin' Rewritten Vanilla Engine Reggie Mod
+MimeType=application/x-love-game;
+Exec=funkin-rewritten %f
+Type=Application
+Categories=Game;
+Terminal=false
+Icon=love
+NoDisplay=true
