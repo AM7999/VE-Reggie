@@ -103,7 +103,7 @@ jobs:
       - name: Download Dependencies
         run: |
           curl -L --remote-name https://github.com/love2d/love/releases/download/11.4/love-11.4-x86_64.AppImage
-          curl -L --remote name https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+          curl -L --remote-name https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
           cp *.AppImage build/appimage
 
       - name: Build
