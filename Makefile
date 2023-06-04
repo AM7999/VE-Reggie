@@ -105,7 +105,7 @@ appimage_x64: lovefile
 	@rm -rf build/appimage
 	@mkdir -p build/appimage/
 
-	@chmod +x ext_appimg.sh && sh ext_appimg.sh
+	@sh ext_appimg.sh
 	@cp build/lovefile/funkin-rewritten.love build/appimage
 	
 	@cat squashfs-root/bin/love build/appimage/funkin-rewritten.love > squashfs-root/bin/funkin-rewritten
